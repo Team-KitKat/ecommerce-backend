@@ -1,52 +1,47 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  BaseEntity,
-  CreateDateColumn
-} from "typeorm";
-import {
-  InputType,
-  Field,
-  ObjectType } from 'type-graphql';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn } from "typeorm";
+import { InputType, Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
 @Entity()
 export class Product extends BaseEntity {
-  @Field()
-  @Column( )
+  
+  @Field(() => String, {nullable: true})
+  @Column()
   _id!: String;
 
-  @Field()
+  @Field(() => String, {nullable: true})
   @Column()
   name!: String;
 
-  @Field()
+  @Field(() => String, {nullable: true})
   @Column()
   image!: String;
 
-  @Field()
+  @Field(() => Number, {nullable: true})
   @Column()
   price!: Number;
 
-  @Field()
+  @Field(() => Number, {nullable: true})
   @Column()
-  offrePrice!: Number;
+  offerPrice!: Number;
 
-  @Field()
+  @Field(() => Number, {nullable: true})
   @Column()
   qty!: Number;
 
-  @Field()
+  @Field(() => String, {nullable: true})
   @Column()
   category!: String;
+
+  @Field(() => Date, {nullable: true})
+  @Column()
+  expDate!: Date;
 }
 
 
 
 @InputType()
 export class ProductInput {
- 
   @Field()
   _id!: String;
 
@@ -60,13 +55,16 @@ export class ProductInput {
   price!: Number;
 
   @Field()
-  offrePrice!: Number;
+  offerPrice!: Number;
 
   @Field()
   qty!: Number;
 
   @Field()
   category!: String;
+
+  @Field()
+  expDate!: Date;
 }
 
 

@@ -8,6 +8,7 @@ import { Resolver,
 import ProductItem from '../models/Product.model' ;
 import { Product } from '../entity/Product';
 import {ProductUpdateInput , ProductInput} from '../entity/Product'
+import { String } from 'aws-sdk/clients/batch';
 
 @Resolver()
 export class PingResolver {
@@ -19,6 +20,15 @@ export class PingResolver {
       return error.message;
     }
   }
+  @Query(() => Product)
+  async searchedProducts( @Arg("id", () => String) id: String ) {
+    try {
+      return await ProductItem.findOne({_id: id}, { __v: 0 });
+    } catch (error) {
+      return error.message;
+    }
+  }
+ 
 
   @Mutation(() => Product)
   async createProduct(
