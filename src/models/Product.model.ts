@@ -19,7 +19,7 @@ const ProductSchema = new Schema({
     type: Number,
     required: false
   },
-  offrePrice: {
+  discount: {
     type: Number,
     required: false
   },

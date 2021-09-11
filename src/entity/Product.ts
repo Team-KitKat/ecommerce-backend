@@ -23,7 +23,7 @@ export class Product extends BaseEntity {
 
   @Field(() => Number, {nullable: true})
   @Column()
-  offerPrice!: Number;
+  discount!: Number;
 
   @Field(() => Number, {nullable: true})
   @Column()
@@ -55,7 +55,7 @@ export class ProductInput {
   price!: Number;
 
   @Field()
-  offerPrice!: Number;
+  discount!: Number;
 
   @Field()
   qty!: Number;
@@ -68,6 +68,15 @@ export class ProductInput {
 }
 
 
+
+@InputType()
+export class ProductSearchInput {
+  @Field()
+  name!: String;
+
+  @Field()
+  category!: String;
+}
 @InputType()
 export class ProductUpdateInput {
   @Field(() => String, {nullable: true})
@@ -80,7 +89,7 @@ export class ProductUpdateInput {
   price?: Number;
 
   @Field(() => Number, {nullable: true})
-  offrePrice?: Number;
+  discount?: Number;
 
   @Field(() => Number, {nullable: true})
   qty?: Number;

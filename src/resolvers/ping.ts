@@ -6,9 +6,8 @@ import { Resolver,
   InputType,
   Field} from 'type-graphql';
 import ProductItem from '../models/Product.model' ;
-import { Product } from '../entity/Product';
+import { Product, ProductSearchInput } from '../entity/Product';
 import {ProductUpdateInput , ProductInput} from '../entity/Product'
-import { String } from 'aws-sdk/clients/batch';
 
 @Resolver()
 export class PingResolver {
@@ -20,6 +19,9 @@ export class PingResolver {
       return error.message;
     }
   }
+
+ 
+
   @Query(() => Product)
   async searchedProducts( @Arg("id", () => String) id: String ) {
     try {
