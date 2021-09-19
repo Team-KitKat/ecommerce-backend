@@ -16,7 +16,7 @@ export class PingResolver {
     try {
       return await ProductItem.find({}, { __v: 0 });
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 
@@ -27,7 +27,7 @@ export class PingResolver {
     try {
       return await ProductItem.findOne({_id: id}, { __v: 0 });
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
  
@@ -40,7 +40,7 @@ export class PingResolver {
       const newProduct = new ProductItem(variables);
       return await newProduct.save();
     } catch (error) {
-      return error.message;
+      return error;
     }
     
   }
@@ -56,7 +56,7 @@ export class PingResolver {
           return false;
         }
       } catch (error) {
-        return error.message;
+        return error;
       }
   }
 
@@ -69,7 +69,7 @@ export class PingResolver {
       const result = await ProductItem.update({ _id }, fields);
       return result.n;
     } catch (error) {
-      return error.message;
+      return error;
     }
   }
 }
